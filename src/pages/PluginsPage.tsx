@@ -45,6 +45,26 @@ export function PluginsPage() {
           return Number(Boolean(b.hasCommands)) - Number(Boolean(a.hasCommands)) || a.name.localeCompare(b.name)
         }
 
+        if (sortMode === 'patches') {
+          return Number(Boolean(b.hasPatches)) - Number(Boolean(a.hasPatches)) || a.name.localeCompare(b.name)
+        }
+
+        if (sortMode === 'required') {
+          return Number(Boolean(b.required)) - Number(Boolean(a.required)) || a.name.localeCompare(b.name)
+        }
+
+        if (sortMode === 'default') {
+          return Number(Boolean(b.enabledByDefault)) - Number(Boolean(a.enabledByDefault)) || a.name.localeCompare(b.name)
+        }
+
+        if (sortMode === 'modified') {
+          return Number(Boolean(b.isModified)) - Number(Boolean(a.isModified)) || a.name.localeCompare(b.name)
+        }
+
+        if (sortMode === 'tags') {
+          return (b.tags?.length ?? 0) - (a.tags?.length ?? 0) || a.name.localeCompare(b.name)
+        }
+
         return a.name.localeCompare(b.name)
       })
   }, [plugins, query, sortMode])

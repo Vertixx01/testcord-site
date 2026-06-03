@@ -8,7 +8,7 @@ export function InfoCardsSection() {
           <ShieldAlert className="h-6 w-6 text-ember-300" aria-hidden="true" />
           <h3 className="mt-5 font-display text-2xl font-black text-cream-50">Terms warning</h3>
           <p className="pretty mt-3 text-sm leading-6 text-cream-400">
-            The README explicitly warns that Discord custom clients violate Discord's Terms of Service. That belongs on the page, not buried.
+            Custom clients like TestCord violate Discord's Terms of Service. So use it at your own risk, we're not responsible for anything that happens to you.
           </p>
         </article>
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { fallbackPluginsUrl, livePluginsUrl } from '../lib/constants'
+import { dedupePlugins, getPluginSource } from '../lib/pluginUtils'
 import type { TestCordPlugin } from '../lib/types'
 
 export function useLivePlugins() {
@@ -24,7 +25,10 @@ export function useLivePlugins() {
       }
 
       const data = await response.json() as TestCordPlugin[]
-      setPlugins(data.filter(plugin => plugin.name).sort((a, b) => a.name.localeCompare(b.name)))
+      setPlugins(
+        dedupePlugins(data.filter(plugin => plugin.name && getPluginSource(plugin) !== 'Vencord Core'))
+          .sort((a, b) => a.name.localeCompare(b.name))
+      )
       setLastUpdated(new Date())
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Could not load plugins')

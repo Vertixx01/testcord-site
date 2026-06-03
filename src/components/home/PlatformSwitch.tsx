@@ -2,9 +2,11 @@ import type { Platform } from '../../lib/types'
 import { platformNotes } from '../../lib/constants'
 
 export function PlatformSwitch({
+  detectedPlatform,
   platform,
   setPlatform,
 }: {
+  detectedPlatform: Platform
   platform: Platform
   setPlatform: (platform: Platform) => void
 }) {
@@ -25,7 +27,14 @@ export function PlatformSwitch({
             }`}
             aria-pressed={selected}
           >
-            {item}
+            <span className="flex items-center justify-between gap-2">
+              <span>{item}</span>
+              {detectedPlatform === item && (
+                <span className={`rounded-full px-2 py-0.5 text-[10px] uppercase tracking-[0.08em] ${selected ? 'bg-ink-950 text-cream-100' : 'bg-ink-950 text-cream-500'}`}>
+                  detected
+                </span>
+              )}
+            </span>
           </button>
         )
       })}

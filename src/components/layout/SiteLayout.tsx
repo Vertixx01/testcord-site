@@ -5,13 +5,14 @@ import {
   discordUrl,
   dxrx99Url,
   equicordUrl,
+  kofiUrl,
   licenseUrl,
   mixiruriUrl,
   nymUrl,
+  pluginIndexUrl,
   readmeUrl,
   releasesUrl,
   repoUrl,
-  thororenUrl,
   vencordUrl,
   vertixxUrl,
   x2bUrl,
@@ -93,7 +94,7 @@ export function SiteLayout() {
               title="Resources"
               links={[
                 { label: 'README', href: readmeUrl },
-                { label: 'Plugin Index', href: 'https://catgirlhentai.online' },
+                { label: 'Plugin Index', to: pluginIndexUrl },
                 { label: 'Equicord', href: equicordUrl },
                 { label: 'Vencord', href: vencordUrl },
               ]}
@@ -103,6 +104,7 @@ export function SiteLayout() {
               links={[
                 { label: 'Discord Server', href: discordUrl, icon: <DiscordIcon className="h-4 w-4" /> },
                 { label: 'GitHub', href: repoUrl, icon: <GithubIcon className="h-4 w-4" /> },
+                { label: 'Ko-fi', href: kofiUrl },
                 { label: "x2b's Nym ref", href: nymUrl },
               ]}
             />
@@ -155,7 +157,7 @@ function FooterColumn({ links, title }: { links: FooterLink[]; title: string }) 
       <h2 className="font-mono text-sm font-black uppercase tracking-[0.18em] text-cream-100">{title}</h2>
       <div className="mt-6 grid gap-3">
         {links.map(link => {
-          const className = 'inline-flex min-h-10 w-fit items-center gap-2 text-base font-bold text-cream-500 transition-colors duration-150 hover:text-cream-100'
+          const className = 'inline-flex min-h-10 min-w-10 w-fit items-center gap-2 text-base font-bold text-cream-500 transition-colors duration-150 hover:text-cream-100'
 
           if (link.to) {
             return (

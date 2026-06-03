@@ -1,8 +1,14 @@
 import { ArrowUpRight, Check } from 'lucide-react'
-import { discordUrl, pluginIndexUrl, repoUrl, windowsInstallerUrl } from '../../lib/constants'
+import { Link } from 'react-router-dom'
+import { discordUrl, platformNotes, pluginIndexUrl, repoUrl } from '../../lib/constants'
+import { useDetectedPlatform } from '../../hooks/useDetectedPlatform'
 import { DiscordIcon, GithubIcon } from '../shared/BrandIcons'
 
-export function HeroSection() {
+export function HeroSection({ pluginCountDisplay }: { pluginCountDisplay: string }) {
+  const detectedPlatform = useDetectedPlatform()
+  const detectedInstallers = platformNotes[detectedPlatform].installers
+  const primaryInstaller = detectedInstallers[0]
+
   return (
     <section className="hero-slab relative border-b border-white/[0.07]">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-14 sm:px-6 sm:py-20 lg:grid-cols-[0.95fr_1.05fr] lg:px-8 lg:py-24">
@@ -12,7 +18,7 @@ export function HeroSection() {
           </p>
 
           <h1 className="balance font-display text-[clamp(3.5rem,11.5vw,8rem)] font-black leading-[0.86] tracking-[-0.055em] text-cream-50">
-            500+ plugins, no committee.
+            {pluginCountDisplay} plugins, no committee.
           </h1>
 
           <p className="pretty mt-7 max-w-xl text-lg leading-8 text-cream-300 sm:text-xl">
@@ -20,13 +26,23 @@ export function HeroSection() {
           </p>
 
           <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <a
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-ember-500 px-6 text-sm font-black text-ink-950 shadow-[0_18px_38px_rgba(222,102,0,0.24)] transition-[background-color,transform,box-shadow] duration-200 hover:bg-ember-400 hover:shadow-[0_22px_44px_rgba(222,102,0,0.3)] active:scale-[0.96]"
-              href={windowsInstallerUrl}
-            >
-              Windows CLI installer
-              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </a>
+            {primaryInstaller ? (
+              <a
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-ember-500 px-6 text-sm font-black text-ink-950 shadow-[0_18px_38px_rgba(222,102,0,0.24)] transition-[background-color,transform,box-shadow] duration-200 hover:bg-ember-400 hover:shadow-[0_22px_44px_rgba(222,102,0,0.3)] active:scale-[0.96]"
+                href={primaryInstaller.href}
+              >
+                {detectedPlatform} {primaryInstaller.label}
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+            ) : (
+              <Link
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-ember-500 px-6 text-sm font-black text-ink-950 shadow-[0_18px_38px_rgba(222,102,0,0.24)] transition-[background-color,transform,box-shadow] duration-200 hover:bg-ember-400 hover:shadow-[0_22px_44px_rgba(222,102,0,0.3)] active:scale-[0.96]"
+                to="/#install"
+              >
+                macOS install route
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            )}
             <a
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-ink-900 px-6 text-sm font-bold text-cream-100 shadow-panel transition-[background-color,transform] duration-200 hover:bg-ink-800 active:scale-[0.96]"
               href={repoUrl}
@@ -40,7 +56,7 @@ export function HeroSection() {
 
           <dl className="mt-12 grid max-w-xl grid-cols-3 gap-3">
             {[
-              ['500+', 'plugins'],
+              [pluginCountDisplay, 'plugins'],
               ['GPL', 'licensed'],
               ['Win', 'installer'],
             ].map(([value, label]) => (
@@ -90,15 +106,13 @@ export function HeroSection() {
                     <DiscordIcon className="h-4 w-4" />
                     Discord
                   </a>
-                  <a
+                  <Link
                     className="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl bg-ember-500 px-3 text-sm font-black text-ink-950 transition-[background-color,transform] duration-200 hover:bg-ember-400 active:scale-[0.96]"
-                    href={pluginIndexUrl}
-                    target="_blank"
-                    rel="noreferrer"
+                    to={pluginIndexUrl}
                   >
                     Plugins
                     <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

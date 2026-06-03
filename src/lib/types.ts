@@ -1,6 +1,11 @@
 export type Platform = 'Windows' | 'macOS' | 'Linux'
 
-export type SortMode = 'name' | 'source' | 'author' | 'commands'
+export type PlatformInstaller = {
+  href: string
+  label: string
+}
+
+export type SortMode = 'name' | 'source' | 'author' | 'commands' | 'patches' | 'required' | 'default' | 'modified' | 'tags'
 
 export type PluginAuthor = {
   id?: string
@@ -38,4 +43,12 @@ export type RecentCommit = {
   }
   html_url: string
   sha: string
+}
+
+export type RepoBranch = {
+  commit: {
+    sha: string
+    url: string
+  }
+  name: string
 }

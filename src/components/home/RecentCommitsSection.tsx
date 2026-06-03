@@ -1,9 +1,11 @@
-import { ArrowUpRight, GitCommitHorizontal, RefreshCw } from 'lucide-react'
+import { useState } from 'react'
+import { ArrowUpRight, GitBranch, GitCommitHorizontal, RefreshCw } from 'lucide-react'
 import { useRecentCommits } from '../../hooks/useRecentCommits'
 import { formatDate, shortCommitMessage } from '../../lib/pluginUtils'
 
 export function RecentCommitsSection() {
-  const { commits, error, isLoading, lastUpdated, refresh } = useRecentCommits()
+  const [branch, setBranch] = useState('main')
+  const { branches, branchesError, commits, error, isLoading, lastUpdated, refresh } = useRecentCommits(branch)
 
   return (
     <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8 lg:py-20" id="commits">
@@ -17,6 +19,19 @@ export function RecentCommitsSection() {
             Pulled from the TestCord commits API, so the page tracks the newest source changes without waiting for a site deploy.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-cream-500">
+            <label className="relative min-w-44">
+              <span className="sr-only">Commit branch</span>
+              <GitBranch className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-cream-500" aria-hidden="true" />
+              <select
+                value={branch}
+                onChange={event => setBranch(event.target.value)}
+                className="min-h-11 w-full appearance-none rounded-full bg-ink-900 py-2 pl-10 pr-8 font-black text-cream-100 shadow-panel outline-none transition-[box-shadow] duration-200 focus:shadow-[inset_0_0_0_2px_rgba(255,181,111,0.8)]"
+              >
+                {(branches.length ? branches : [{ name: branch, commit: { sha: '', url: '' } }]).map(item => (
+                  <option key={item.name} value={item.name}>{item.name}</option>
+                ))}
+              </select>
+            </label>
             <button
               type="button"
               onClick={() => void refresh()}
@@ -26,6 +41,7 @@ export function RecentCommitsSection() {
               Refresh commits
             </button>
             {lastUpdated && <span className="tabular-nums">Updated {formatDate(lastUpdated.toISOString())}</span>}
+            {branchesError && <span className="text-ember-300">Branches failed: {branchesError}</span>}
           </div>
         </div>
 

@@ -95,12 +95,11 @@ a:focus-visible {
   transform: rotate(1.25deg);
 }
 
-.poster-card > * {
+.poster-card>* {
   transform: rotate(-1.25deg);
 }
 
-.logo-mark,
-.product-image {
+.logo-mark {
   outline: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -129,13 +128,15 @@ a:focus-visible {
 }
 
 @media (max-width: 1023px) {
+
   .poster-card,
-  .poster-card > * {
+  .poster-card>* {
     transform: none;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

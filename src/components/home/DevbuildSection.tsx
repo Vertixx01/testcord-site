@@ -10,7 +10,7 @@ export function DevbuildSection() {
             For people comfortable living from source.
           </h2>
           <p className="pretty mt-5 max-w-lg text-lg leading-8 text-cream-400">
-            The README recommends Git, Node.js LTS, pnpm, then build and inject. Keep this section practical; no fake cross-platform download buttons.
+            We recommend Git, Node.js LTS, pnpm, then build and inject. Keep this section practical; no fake cross-platform download buttons.
           </p>
         </div>
         <TerminalPanel />
