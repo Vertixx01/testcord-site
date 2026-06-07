@@ -16,7 +16,7 @@ export function RecentCommitsSection() {
             Latest repo movement.
           </h2>
           <p className="pretty mt-5 max-w-lg text-lg leading-8 text-cream-400">
-            Pulled from the TestCord commits API, so the page tracks the newest source changes without waiting for a site deploy.
+            Fetched directly from the GitHub repository API so you can follow active development and releases in real time.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-cream-500">
             <label className="relative min-w-44">

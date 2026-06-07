@@ -88,7 +88,7 @@ export function PluginsPage() {
                 TestCord plugins, pulled live.
               </h1>
               <p className="pretty mt-6 max-w-2xl text-lg leading-8 text-cream-400">
-                This page reads TestCord's generated plugin JSON, refreshes every 30 seconds, and exposes author, source, description, commands, tags, and source path.
+                Explore the complete registry of built-in and third-party plugins. Easily filter by author, commands, tags, or patches, with updates synced every 30 seconds.
               </p>
             </div>
 

@@ -4,7 +4,7 @@ import type { Platform, PlatformInstaller } from './types'
 export const repoOwner = 'TestcordDev'
 export const repoName = 'TestCord'
 export const repoUrl = `https://github.com/${repoOwner}/${repoName}`
-export const discordUrl = 'https://discord.gg/EMDpkV57gW'
+export const discordUrl = 'https://discord.gg/testcord'
 export const latestReleaseDownloadUrl = `${repoUrl}/releases/download/latest`
 export const windowsInstallerUrl = `${latestReleaseDownloadUrl}/Testcord_installer_cli.exe`
 export const windowsGuiInstallerUrl = `${latestReleaseDownloadUrl}/Testcord_installer.exe`
@@ -59,7 +59,7 @@ export const platformNotes: Record<Platform, { detail: string; installers: Platf
 export const pluginCards = [
   {
     title: 'Live plugin count',
-    detail: 'A huge plugin set pulled from the generated GitHub plugin JSON, then deduped for a cleaner index.',
+    detail: 'Browse all available plugins, automatically loaded and indexed directly from the official plugin registry.',
     icon: PackageCheck,
   },
   {

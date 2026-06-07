@@ -16,7 +16,7 @@ export function InfoCardsSection() {
           <GitBranch className="h-6 w-6 text-gold-300" aria-hidden="true" />
           <h3 className="mt-5 font-display text-2xl font-black text-cream-50">Fork lineage</h3>
           <p className="pretty mt-3 text-sm leading-6 text-cream-400">
-            Credits flow through Equicord, Vencord, and Suncord. TestCord should feel like its own messy branch, not a pasted fork page.
+            Credits flow through Equicord, Vencord. TestCord should feel like its own messy branch, not a pasted fork page.
           </p>
         </article>
 

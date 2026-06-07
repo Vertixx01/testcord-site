@@ -17,7 +17,7 @@ import {
   vertixxUrl,
   x2bUrl,
 } from '../../lib/constants'
-import { DiscordIcon, GithubIcon, LogoMark } from '../shared/BrandIcons'
+import { DiscordIcon, GithubIcon, KofiIcon, LogoMark, NymIcon } from '../shared/BrandIcons'
 
 function ScrollToHash() {
   const location = useLocation()
@@ -104,8 +104,8 @@ export function SiteLayout() {
               links={[
                 { label: 'Discord Server', href: discordUrl, icon: <DiscordIcon className="h-4 w-4" /> },
                 { label: 'GitHub', href: repoUrl, icon: <GithubIcon className="h-4 w-4" /> },
-                { label: 'Ko-fi', href: kofiUrl },
-                { label: "x2b's Nym ref", href: nymUrl },
+                { label: 'Ko-fi', href: kofiUrl, icon: <KofiIcon className="h-4 w-4" /> },
+                { label: "x2b's Nym ref", href: nymUrl, icon: <NymIcon className="h-4 w-4 invert brightness-75" /> },
               ]}
             />
             <FooterColumn
@@ -120,7 +120,7 @@ export function SiteLayout() {
 
           <div className="mt-10 rounded-[24px] bg-ink-900 p-5 shadow-panel sm:p-6">
             <p className="text-sm font-black uppercase tracking-[0.18em] text-cream-100">Credits</p>
-            <div className="mt-5 flex flex-wrap gap-x-7 gap-y-3 text-sm font-bold text-cream-500 sm:text-base">
+            <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-2 text-sm font-bold text-cream-500 min-[480px]:grid-cols-2 sm:flex sm:flex-wrap sm:gap-x-7 sm:gap-y-3 sm:text-base">
               <CreditLink href={x2bUrl} label="x2b" role="Owner" tone="text-ember-300" />
               <CreditLink href={mixiruriUrl} label="Mixiruri" role="Co-owner" tone="text-ember-300" />
               <CreditLink href={dxrx99Url} label="dxrx99" role="Co-owner" tone="text-ember-300" />

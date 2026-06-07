@@ -54,20 +54,20 @@ const pluginChecklist = [
 
 const faqItems = [
   {
-    question: 'Where does the live plugin list come from?',
-    answer: 'The site reads the generated TestCord-Builds plugins.json file, dedupes obvious duplicate/plugin-family entries, and refreshes the plugin page periodically.',
+    question: 'How do I use user plugins?',
+    answer: 'First build TestCord from source, then make a new folder under the src directory called userplugins, and drop the custom files for the plugin into that folder.',
   },
   {
-    question: 'Why does the homepage plugin count look rounded?',
-    answer: 'The raw count changes over time, so the homepage rounds down to a clean marketing number while the /plugins page shows the exact live count.',
+    question: 'Is TestCord safe?',
+    answer: 'Yes, the client itself is open source and doesn\'t contain any backdoors or trackers.',
   },
   {
-    question: 'Can I inspect a plugin before installing it?',
-    answer: 'Yes. Use the View source button on a plugin card. It opens the plugin code in a syntax-highlighted popup without leaving the site.',
+    question: 'Will my account get banned if I use TestCord?',
+    answer: 'Using client modifications is technically against Discord\'s Terms of Service. While Discord doesn\'t actively ban users just for using TestCord, using risky plugins that automate actions, spam API endpoints, or scrape data can get your account flagged.',
   },
   {
-    question: 'Do patched plugins need a restart?',
-    answer: 'Often, yes. If a plugin patches Discord modules, toggling it may not fully apply until Discord is restarted or TestCord is reinjected.',
+    question: 'If I want to contribute, who should I contact?',
+    answer: 'You can join our official Discord server to chat with the developers, or just open a pull request directly on our GitHub repository.',
   },
   {
     question: 'Is macOS supported?',
